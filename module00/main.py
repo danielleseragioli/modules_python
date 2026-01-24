@@ -16,6 +16,7 @@ How it works:
 Make sure your exercise files are in the same folder as this main.py file!
 """
 
+
 def test_ft_exercise(exercise_file_name):
     """
     This function tries to run one of your exercises.
