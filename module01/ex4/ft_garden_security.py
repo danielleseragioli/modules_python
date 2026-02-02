@@ -1,5 +1,30 @@
 class SecurePlant:
 
+    """
+    Represents a secure plant that protects data integrity.
+    This class implements encapsulation and validation to prevent
+    corruption of plant data through invalid values.
+    
+    Attributes
+    ----------
+        name : The name of the plant.
+        _height : The height of the plant in centimeters (private attribute).
+        _age : The age of the plant in days (private attribute).
+    
+    Methods
+    -------
+        set_height(height: int)
+            Sets the plant height with validation against negative values.
+        set_age(age: int)
+            Sets the plant age with validation against negative values.
+        get_height() -> int
+            Returns the current height of the plant.
+        get_age() -> int
+            Returns the current age of the plant.
+        get_info() -> str
+            Returns formatted information about the plant.
+    """
+
     def __init__(self, name: str, height: int, age: int):
         self.name = name.capitalize()
         self._height = height
@@ -8,7 +33,7 @@ class SecurePlant:
     
     def set_height(self, set_height: int):
         if set_height < 0:
-            print(f"Invalid operation attempted: height {set_height}cm [REJECTED]")
+            print(f"\nInvalid operation attempted: height {set_height}cm [REJECTED]")
             print("Security: Negative height rejected")
         else:
             self._height = set_height
@@ -16,7 +41,7 @@ class SecurePlant:
 
     def set_age(self, set_age: int):
         if set_age < 0:
-            print(f"Invalid operation attempted: height {set_age} days [REJECTED]")
+            print(f"\nInvalid operation attempted: age {set_age} days [REJECTED]")
             print("Security: Negative age rejected")
         else:
             self._age = set_age
@@ -29,10 +54,22 @@ class SecurePlant:
         return self._age
 
     def get_info(self)->str:
-        return f"{self.name}: ({self._height}cm, {self._age} days)"
+        return f"{self.name} ({self._height}cm, {self._age} days)"
 
 
 def ft_garden_security():
+
+    """    
+    Creates a SecurePlant instance and tests its validation mechanisms
+    by attempting to set valid and invalid values. Shows how the system
+    rejects negative heights and ages to maintain data integrity.
+    
+    Returns
+    -------
+    None
+        This function does not return any value.
+        It only prints information to the standard output.
+    """
 
     print("=== Garden Security System ===")
 
@@ -43,7 +80,6 @@ def ft_garden_security():
     rose.set_age(30)
 
     rose.set_height(-5)
-    rose.set_age(-7)
 
     print(f"\nCurrent plant: {rose.get_info()}")
 
