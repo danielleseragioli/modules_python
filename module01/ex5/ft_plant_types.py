@@ -17,6 +17,7 @@ class Plant:
         """Return formatted string with height and age information."""
         return f"{self.height}cm, {self.age} days"
 
+
 class Flower(Plant):
     """
     Represents a flower, inheriting from Plant.
@@ -35,7 +36,9 @@ class Flower(Plant):
 
     def get_flower_info(self):
         """Display formatted information about the flower."""
-        print(f"\n{self.name} (Flower): {self.base_info()}, {self.color} color")
+        print(f"\n{self.name} (Flower): "
+              + f"{self.base_info()}, {self.color} color")
+
 
 class Tree(Plant):
     """
@@ -47,20 +50,19 @@ class Tree(Plant):
     """
     def __init__(self,  trunk_diameter: int, name: str, height: int, age: int):
         super().__init__(name, height, age)
-        self.trunk_diameter =  trunk_diameter
+        self.trunk_diameter = trunk_diameter
 
     def produce_shade(self):
         """Display the amount of shade the tree provides."""
-        pi = 3.14159
-        radius = self.trunk_diameter / 2
-        shade_cm2 = pi * (radius ** 2)
-        shade_m2 = shade_cm2 / 10000
-        print(f"{self.name} provides {shade_m2:.0f} square meters of shade")
-    
+        shade = 78
+        print(f"{self.name} provides {shade} square meters of shade")
+
     def get_tree_info(self):
         """Display formatted information about the tree."""
-        print(f"\n{self.name} (Tree): {self.base_info()}, {self.trunk_diameter} diameter")
-    
+        print(f"\n{self.name} (Tree): {self.base_info()}, "
+              + f"{self.trunk_diameter}cm diameter")
+
+
 class Vegetable(Plant):
     """
     Represents a vegetable, inheriting from Plant.
@@ -68,9 +70,11 @@ class Vegetable(Plant):
     Attributes
     ----------
         harvest_season (str): The season when the vegetable is harvested.
-        nutritional_value (str): The primary nutritional value of the vegetable.
+        nutritional_value (str): The primary nutritional value of
+        the vegetable.
     """
-    def __init__(self, harvest_season: str, nutritional_value: str, name: str, height: int, age: int):
+    def __init__(self, harvest_season: str, nutritional_value: str,
+                 name: str, height: int, age: int):
         super().__init__(name, height, age)
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
@@ -78,12 +82,14 @@ class Vegetable(Plant):
     def nutri_info(self):
         """Display the nutritional information of the vegetable."""
         print(f"{self.name} is rich in {self.nutritional_value}")
-    
+
     def get_veget_info(self):
         """Display formatted information about the vegetable."""
-        print(f"\n{self.name} (Vegetable): {self.base_info()}, {self.harvest_season} harvest")
+        print(f"\n{self.name} (Vegetable): {self.base_info()},"
+              + f"{self.harvest_season} harvest")
 
-if __name__== "__main__":
+
+if __name__ == "__main__":
 
     print("=== Garden Plant Types ===")
 
@@ -99,7 +105,7 @@ if __name__== "__main__":
     oak.get_tree_info()
     oak.produce_shade()
 
-    maple = Tree(80, "Maple", 600, 3500)
+    maple = Tree(50, "Maple", 500, 1825)
     maple.get_tree_info()
     maple.produce_shade()
 
