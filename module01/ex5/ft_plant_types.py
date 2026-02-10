@@ -9,12 +9,22 @@ class Plant:
         age (int): The age of the plant in days.
     """
     def __init__(self, name: str, height: int, age: int):
+        """
+        Initialize a Plant instance.
+        """
         self.name = name.capitalize()
         self.height = height
         self.age = age
 
     def base_info(self) -> str:
-        """Return formatted string with height and age information."""
+        """
+        Return a formatted string with the plant's height and age information.
+
+        Returns
+        -------
+        str
+            A string containing the height and age of the plant.
+        """
         return f"{self.height}cm, {self.age} days"
 
 
@@ -27,15 +37,23 @@ class Flower(Plant):
         color (str): The color of the flower.
     """
     def __init__(self, color: str, name: str, height: int, age: int):
+        """
+        Initialize a Flower instance.
+        """
         super().__init__(name, height, age)
         self.color = color
 
     def bloom(self):
-        """Display a message indicating the flower is blooming."""
+        """
+        Print a message indicating the flower is blooming.
+        """
         print(f"{self.name} is blooming beautifully!")
 
     def get_flower_info(self):
-        """Display formatted information about the flower."""
+        """
+        Print formatted information about the flower, including
+        name, height, age, and color.
+        """
         print(f"\n{self.name} (Flower): "
               + f"{self.base_info()}, {self.color} color")
 
@@ -49,16 +67,25 @@ class Tree(Plant):
         trunk_diameter (int): The diameter of the tree trunk in centimeters.
     """
     def __init__(self,  trunk_diameter: int, name: str, height: int, age: int):
+        """
+        Initialize a Tree instance.
+        """
         super().__init__(name, height, age)
         self.trunk_diameter = trunk_diameter
 
     def produce_shade(self):
-        """Display the amount of shade the tree provides."""
-        shade = 78
-        print(f"{self.name} provides {shade} square meters of shade")
+        """
+        Print the amount of shade the tree provides, calculated from
+        trunk diameter and height.
+        """
+        shade = (self.trunk_diameter * self.height) // 320
+        print(f"{self.name} provides {shade:.2f} square meters of shade")
 
     def get_tree_info(self):
-        """Display formatted information about the tree."""
+        """
+        Print formatted information about the tree, including name,
+        height, age, and trunk diameter.
+        """
         print(f"\n{self.name} (Tree): {self.base_info()}, "
               + f"{self.trunk_diameter}cm diameter")
 
@@ -75,16 +102,24 @@ class Vegetable(Plant):
     """
     def __init__(self, harvest_season: str, nutritional_value: str,
                  name: str, height: int, age: int):
+        """
+        Initialize a Vegetable instance.
+        """
         super().__init__(name, height, age)
         self.harvest_season = harvest_season
         self.nutritional_value = nutritional_value
 
     def nutri_info(self):
-        """Display the nutritional information of the vegetable."""
+        """
+        Print the nutritional information of the vegetable.
+        """
         print(f"{self.name} is rich in {self.nutritional_value}")
 
     def get_veget_info(self):
-        """Display formatted information about the vegetable."""
+        """
+        Print formatted information about the vegetable, including name,
+        height, age, and harvest season.
+        """
         print(f"\n{self.name} (Vegetable): {self.base_info()},"
               + f"{self.harvest_season} harvest")
 
@@ -105,7 +140,7 @@ if __name__ == "__main__":
     oak.get_tree_info()
     oak.produce_shade()
 
-    maple = Tree(50, "Maple", 500, 1825)
+    maple = Tree(1000, "Maple", 500, 1825)
     maple.get_tree_info()
     maple.produce_shade()
 
