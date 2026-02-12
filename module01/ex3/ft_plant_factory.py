@@ -34,7 +34,7 @@ def ft_plant_factory():
     Returns
     -------
     None
-        This function does not return any value. 
+        This function does not return any value.
         It only prints information to
         the standard output.
     """

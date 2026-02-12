@@ -19,7 +19,7 @@ class SecurePlant:
         Set the height of the plant with validation.
         """
         if set_height < 0:
-            print("\nInvalid operation attempted: height"
+            print("\nInvalid operation attempted: height "
                   + f"{set_height}cm [REJECTED]")
             print("Security: Negative height rejected")
         else:

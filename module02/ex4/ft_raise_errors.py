@@ -33,14 +33,14 @@ def test_plant_checks():
     except ValueError as e:
         print(f"Error: {e}")
 
-    print("\nTesting bad water level...")        
+    print("\nTesting bad water level...")
     try:
         result = check_plant_health("tomato", 15, 5)
         print(result)
     except ValueError as e:
         print(f"Error: {e}")
 
-    print("\nTesting bad sunlight hours...")    
+    print("\nTesting bad sunlight hours...")
     try:
         result = check_plant_health("tomato", 8, 0)
         print(result)
