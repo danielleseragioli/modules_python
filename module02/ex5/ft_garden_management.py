@@ -1,22 +1,28 @@
 class GardenError(Exception):
+    """Base exception for garden management errors."""
     pass
 
 
 class PlantError(GardenError):
+    """Exception for plant-specific errors."""
     pass
 
 
 class WaterError(GardenError):
+    """Exception for water management errors."""
     pass
 
 
 class GardenManager:
+    """Manages garden plants and water resources."""
 
     def __init__(self):
+        """Initialize garden with empty plants and full water tank."""
         self.plants = {}
         self.water_tank = 100
 
     def water_plants(self) -> None:
+        """Water all plants with cleanup in finally block."""
         try:
             for plant in self.plants:
                 if self.water_tank < 5:
@@ -30,12 +36,14 @@ class GardenManager:
             print("Closing watering system (cleanup)")
 
     def add_plant(self, name) -> str:
+        """Add a new plant to the garden."""
         if not name:
             raise ValueError("Plant name cannot be empty!")
         self.plants[name] = {"water": 0, "sun": 0}
         return f"Added {name} successfully"
 
     def check_plant_health(self, plant_name, water_level, sunlight_hours):
+        """Check and validate plant health parameters."""
         if not plant_name:
             raise ValueError("Plant name cannot be empty!")
         if water_level < 1:
@@ -50,10 +58,12 @@ class GardenManager:
         if sunlight_hours > 12:
             raise ValueError(f"Sunlight hours {sunlight_hours} "
                              + "is too high (max 12)")
-        return (f"{plant_name}: healthy! (water: {water_level}, sun: {sunlight_hours})")
+        return (f"{plant_name}: healthy! (water: {water_level}, "
+                + f"sun: {sunlight_hours})")
 
 
 def test_garden_management():
+    """Test the complete garden management system."""
     print("=== Garden Management System ===\n")
 
     manager = GardenManager()

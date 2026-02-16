@@ -1,5 +1,6 @@
 
 def garden_operations(error_type: str) -> None:
+    """Demonstrate handling different exception types."""
     try:
         if error_type == "value":
             int("abc")
@@ -27,7 +28,7 @@ def garden_operations(error_type: str) -> None:
 
 
 def test_error_types() -> None:
-
+    """Test and display different exception types."""
     print("=== Garden Error Types Demo ===")
 
     print("\nTesting ValueError...")

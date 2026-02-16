@@ -1,17 +1,33 @@
 class GardenError(Exception):
+    """
+    Base exception class for garden-related errors.
+
+    This is the parent class for all custom garden exceptions,
+    allowing for hierarchical error handling.
+    """
     pass
 
 
 class PlantError(GardenError):
+    """
+    Exception raised for plant-related errors.
+
+    Inherits from GardenError for hierarchical exception handling.
+    """
     pass
 
 
 class WaterError(GardenError):
+    """
+    Exception raised for water management errors.
+
+    Inherits from GardenError for hierarchical exception handling.
+    """
     pass
 
 
 def test_custom_errors():
-
+    """Test custom exception handling and hierarchy."""
     print("\nTesting PlantError...")
     try:
         raise PlantError("The tomato plant is wilting!")

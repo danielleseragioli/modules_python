@@ -1,5 +1,5 @@
 def check_temperature(temp_str: str):
-
+    """Check if temperature is valid for plants (0-40°C)."""
     print(f"\nTesting temperature: {temp_str}")
     try:
         temp = int(temp_str)
@@ -18,6 +18,7 @@ def check_temperature(temp_str: str):
 
 
 def test_temperature_input():
+    """Test temperature checking with various inputs."""
     print("=== Garden Temperature Checker ===")
     check_temperature("25")
     check_temperature("abc")

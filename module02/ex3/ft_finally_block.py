@@ -1,4 +1,5 @@
 def water_plants(plant_list) -> None:
+    """Water plants with guaranteed cleanup in finally block."""
     print("Opening watering system")
     try:
         for plant in plant_list:
@@ -13,6 +14,7 @@ def water_plants(plant_list) -> None:
 
 
 def test_watering_system() -> None:
+    """Test watering system with normal and error conditions."""
     print("=== Garden Watering System ===")
 
     print("\nTesting normal watering...")
