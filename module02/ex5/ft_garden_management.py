@@ -58,7 +58,7 @@ class GardenManager:
         if sunlight_hours > 12:
             raise ValueError(f"Sunlight hours {sunlight_hours} "
                              + "is too high (max 12)")
-        return (f"{plant_name}: healthy! (water: {water_level}, "
+        return (f"{plant_name}: healthy (water: {water_level}, "
                 + f"sun: {sunlight_hours})")
 
 

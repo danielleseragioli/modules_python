@@ -6,7 +6,6 @@ def water_plants(plant_list) -> None:
             if plant is None:
                 raise ValueError("Cannot water None - invalid plant!")
             print(f"Watering {plant}")
-        print("Watering completed successfully!")
     except ValueError as error:
         print(f"Error: {error}")
     finally:
@@ -20,6 +19,7 @@ def test_watering_system() -> None:
     print("\nTesting normal watering...")
     good_plants = ["tomato", "lettuce", "carrots"]
     water_plants(good_plants)
+    print("Watering completed successfully!")
 
     print("\nTesting with error...")
     bad_plants = ["tomato", None, "lett"]

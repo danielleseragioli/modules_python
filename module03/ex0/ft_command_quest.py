@@ -1,6 +1,7 @@
 import sys
 
-def command_quest():
+
+def command_quest() -> None:
     args = sys.argv
     print("=== Command Quest ===")
     if len(args) < 2:
@@ -12,6 +13,7 @@ def command_quest():
     for i, arg in enumerate(args[1:], start=1):
         print(f"Argument {i}: {arg}")
     print(f"Total arguments: {len(args)}")
+
 
 if __name__ == "__main__":
     command_quest()
