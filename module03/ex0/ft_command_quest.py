@@ -2,7 +2,11 @@ import sys
 
 
 def command_quest() -> None:
-    args = sys.argv
+    """
+    Parses command-line arguments and prints program name and argument details.
+    Demonstrates argument counting and formatting.
+    """
+    args: list[str] = sys.argv
     print("=== Command Quest ===")
     if len(args) < 2:
         print("No arguments provided!")
@@ -16,4 +20,7 @@ def command_quest() -> None:
 
 
 if __name__ == "__main__":
+    """
+    Entry point for command quest demonstration.
+    """
     command_quest()

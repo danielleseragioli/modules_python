@@ -2,8 +2,12 @@ import sys
 
 
 def score_analyze() -> None:
-    args = sys.argv[1:]
-    scores = []
+    """
+    Parses command-line arguments as player scores and prints analytics.
+    Handles invalid input gracefully and computes statistics.
+    """
+    args: list[str] = sys.argv[1:]
+    scores: list[int] = []
 
     print("=== Player Score Analytics ===")
     if len(args) < 2:
@@ -26,4 +30,7 @@ def score_analyze() -> None:
 
 
 if __name__ == "__main__":
+    """
+    Entry point for player score analytics demonstration.
+    """
     score_analyze()

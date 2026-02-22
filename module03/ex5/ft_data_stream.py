@@ -1,9 +1,14 @@
-from typing import Dict, Any, Generator
+from typing import Generator
 
 
-def event_generator(count: int) -> Generator[Dict[str, Any], None, None]:
-    players = ["alice", "bob", "charlie", "dani", "duda"]
-    extra_levelups = 0
+def event_generator(count: int) -> Generator[tuple[int, str, int, str],
+                                             None, None]:
+    """
+    Generates game event tuples for a given count.
+    Each event is a tuple: (event_id, player, level, action).
+    """
+    players: list[str] = ["alice", "bob", "charlie", "dani", "duda"]
+    extra_levelups: int = 0
 
     for event_id in range(1, count + 1):
         player = players[(event_id - 1) % len(players)]
@@ -37,11 +42,8 @@ def event_generator(count: int) -> Generator[Dict[str, Any], None, None]:
 def filter_high_level(events: Generator,
                       min_level: int = 10) -> Generator[tuple, None, None]:
     """
-    Índices da tupla do evento:
-        event[0] = id
-        event[1] = player
-        event[2] = level ← aqui
-        event[3] = action
+    Filters events for players with level >= min_level.
+    Yields only events meeting the level requirement.
     """
     for event in events:
         if event[2] >= min_level:
@@ -49,15 +51,22 @@ def filter_high_level(events: Generator,
 
 
 def fibonacci_generator(n: int) -> Generator[int, None, None]:
-    a, b = 0, 1
+    """
+    Generates the first n numbers of the Fibonacci sequence.
+    """
+    a: int = 0
+    b: int = 1
     for _ in range(n):
         yield a
         a, b = b, a + b
 
 
 def prime_generator(limit: int) -> Generator[int, None, None]:
-    num = 2
-    found = 0
+    """
+    Generates the first 'limit' prime numbers.
+    """
+    num: int = 2
+    found: int = 0
     while found < limit:
         is_prime = True
         for i in range(2, num):
@@ -71,14 +80,20 @@ def prime_generator(limit: int) -> Generator[int, None, None]:
 
 
 def main() -> None:
+    """
+    Main function to run the game data stream processor and analytics.
+    Prints event details, analytics, and generator demonstrations.
+    """
     print("=== Game Data Stream Processor ===")
     print("\nProcessing 1000 game events...\n")
 
-    events = event_generator(1000)
-    total_events = 0
-    high_level_count = 0
-    treasure_count = 0
-    levelup_count = 0
+    events: Generator[tuple[int, str, int, str], None, None] = (
+        event_generator(1000)
+    )
+    total_events: int = 0
+    high_level_count: int = 0
+    treasure_count: int = 0
+    levelup_count: int = 0
 
     for event in events:
         event_id, player, level, action = event
@@ -106,8 +121,8 @@ def main() -> None:
 
     print("\n=== Generator Demonstration ===")
     print("Fibonacci sequence (first 10): ", end="")
-    fib_gen = fibonacci_generator(10)
-    idx = 0
+    fib_gen: Generator[int, None, None] = fibonacci_generator(10)
+    idx: int = 0
     for num in fib_gen:
         if idx < 9:
             print(num, end=", ")
@@ -116,7 +131,7 @@ def main() -> None:
         idx += 1
 
     print("Prime numbers (first 5): ", end="")
-    prime_gen = prime_generator(5)
+    prime_gen: Generator[int, None, None] = prime_generator(5)
     idx = 0
     for num in prime_gen:
         if idx < 4:
