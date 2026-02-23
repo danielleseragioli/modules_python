@@ -18,7 +18,7 @@ def transform_data() -> None:
             "collector", "strategist", "veteran"
         ], "regions": "central", "status": "active"},
 
-        {"name": "diana", "scores": 3890, "achievements": [
+        {"name": "diana", "scores": 2050, "achievements": [
             "level_10", "boss_slayer"
         ], "regions": "north", "status": "inactive"}
     ]

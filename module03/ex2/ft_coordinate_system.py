@@ -60,21 +60,21 @@ def main() -> None:
     dist1: float = calculate_distance(origin, position1)
     print(f"Distance between {origin} and {position1}: {dist1:.2f}")
 
-    position2: tuple[int, int, int] | None = parse_coordinates("3,4,0")
-    print(f"\nParsing coordinates: {position2}")
+    coord_str = "3,4,0"
+    print(f"\nParsing coordinates: \"{coord_str}\"")
+    position2 = parse_coordinates(coord_str)
 
     if position2:
         print(f"Parsed position: {position2}")
         dist2: float = calculate_distance(origin, position2)
-        print(f"Distance between {origin} and {position2}: {dist2:.2f}")
+        print(f"Distance between {origin} and {position2}: {dist2:.1f}")
 
-    invalid_position: tuple[int, int, int] | None = parse_coordinates(
-        "abc,def,ghi"
-    )
-    print(f"\nParsing invalid coordinates: {invalid_position}")
+    invalid_str = "abc,def,ghi"
+    print(f"\nParsing invalid coordinates: \"{invalid_str}\"")
+    parse_coordinates(invalid_str)
 
     if position2:
-        print(f"\nUnpacking demonstration: {position2}")
+        print("\nUnpacking demonstration:")
         x: int = position2[0]
         y: int = position2[1]
         z: int = position2[2]
