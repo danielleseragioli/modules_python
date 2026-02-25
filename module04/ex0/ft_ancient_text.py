@@ -1,7 +1,8 @@
 def recover_data(filename: str) -> None:
+    """Recover and display data from an archive file."""
     print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===")
 
-    file = None
+    file: None | object = None
     try:
         file = open(filename, "r")
         print(f"\nAccessing Storage Vault: {filename}")
