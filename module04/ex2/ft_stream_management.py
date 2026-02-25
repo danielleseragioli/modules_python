@@ -2,13 +2,14 @@ import sys
 
 
 def stream_manager() -> None:
+    """Manage communication streams for archival data exchange."""
     print("=== CYBER ARCHIVES - COMMUNICATION SYSTEM ===")
 
     try:
-        input_id: str = input("Input Stream active. Enter archivist ID: ")
+        input_id: str = input("\nInput Stream active. Enter archivist ID: ")
         status: str = input("Input Stream active. Enter status report: ")
     except (KeyboardInterrupt, EOFError):
-        print("\n[System] An error occured, try again", file=sys.stderr)
+        print("\n[System] An error occurred, try again", file=sys.stderr)
     else:
         sys.stdout.write(
             f"\n[STANDARD] Archive status from {input_id}: "

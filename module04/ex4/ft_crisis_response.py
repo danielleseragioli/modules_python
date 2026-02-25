@@ -1,12 +1,13 @@
 def crisis_response(files: list[str]) -> None:
-
+    """Handle crisis scenarios in archive access with
+    comprehensive error management."""
     print("=== CYBER ARCHIVES - CRISIS RESPONSE SYSTEM ===")
 
     for filename in files:
-        file = None
+        file: None | object = None
         if filename == "standard_archive.txt":
             print("\nROUTINE ACCESS: Attempting access to "
-                  + "'standard_archive.txt'...")
+                  + f"'{filename}'...")
         else:
             print(f"\nCRISIS ALERT: Attempting access to '{filename}'...")
         try:
@@ -22,12 +23,13 @@ def crisis_response(files: list[str]) -> None:
             print("RESPONSE: Security protocols deny access")
             print("STATUS: Crisis handled, security maintained")
         except Exception as e:
-            print(f"Un unexpected error ocurred: {e}")
+            print(f"An unexpected error occurred: {e}")
     print("\nAll crisis scenarios handled successfully. Archives secure.")
 
 
-def main():
-    files = [
+def main() -> None:
+    """Execute the crisis response protocol."""
+    files: list[str] = [
         "lost_archive.txt",
         "classified_vault.txt",
         "standard_archive.txt"
