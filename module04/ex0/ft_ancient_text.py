@@ -13,7 +13,7 @@ def recover_data(filename: str) -> None:
     except FileNotFoundError:
         print(f"Error: Vault '{filename}' not found")
     except Exception as e:
-        print(f"Un unexpected error ocurred: {e}")
+        print(f"An unexpected error occurred: {e}")
     finally:
         if file:
             file.close()
