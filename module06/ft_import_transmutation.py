@@ -9,24 +9,18 @@ def main() -> None:
     print("\n=== Import Transmutation Mastery ===")
 
     print("\nMethod 1 - Full module import:")
-    fire_result: str = alchemy.elements.create_fire()
-    print(f"alchemy.elements.create_fire(): {fire_result}")
+    print(f"alchemy.elements.create_fire(): {create_fire()}")
 
     print("\nMethod 2 - Specific function import:")
-    water_result: str = alchemy.elements.create_water()
-    print(f"create_water(): {water_result}")
+    print(f"create_water(): {create_water()}")
 
     print("\nMethod 3 - Aliased import:")
-    heal_result: str = heal()
-    print(f"heal(): {heal_result}")
+    print(f"heal(): {heal()}")
 
     print("\nMethod 4 - Multiple imports:")
-    earth_result: str = alchemy.elements.create_earth()
-    fire_result: str = alchemy.elements.create_fire()
-    strength_result: str = alchemy.potions.strength_potion()
-    print(f"create_earth(): {earth_result}")
-    print(f"create_fire(): {fire_result}")
-    print(f"strength_potion(): {strength_result}")
+    print(f"create_earth(): {create_earth()}")
+    print(f"create_fire(): {create_fire()}")
+    print(f"strength_potion(): {strength_potion()}")
 
     print("\nAll import transmutation methods mastered!")
 
