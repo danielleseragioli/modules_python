@@ -2,6 +2,7 @@ import alchemy
 
 
 def main() -> None:
+    """Demonstrate __init__.py control over package-level exports."""
     print("\n=== Sacred Scroll Mastery ===")
 
     print("\nTesting direct module access:")

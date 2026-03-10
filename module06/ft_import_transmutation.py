@@ -6,6 +6,8 @@ from alchemy.potions import strength_potion
 
 
 def main() -> None:
+    """Demonstrate different import styles: module, specific,
+    aliased and multiple."""
     print("\n=== Import Transmutation Mastery ===")
 
     print("\nMethod 1 - Full module import:")

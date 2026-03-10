@@ -2,6 +2,7 @@ from alchemy.grimoire import validate_ingredients, record_spell
 
 
 def main() -> None:
+    """Demonstrate circular dependency resolution using late imports."""
     print("\n=== Circular Curse Breaking ===")
 
     print("\nTesting ingredient validation:")

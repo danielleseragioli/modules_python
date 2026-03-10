@@ -4,6 +4,7 @@ import alchemy.transmutation.advanced as advanced
 
 
 def main() -> None:
+    """Compare absolute and relative imports in the transmutation package."""
     print("\n=== Pathway Debate Mastery ===")
 
     print("\nTesting Absolute Imports (from basic.py):")

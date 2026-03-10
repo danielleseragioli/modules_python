@@ -1,6 +1,6 @@
 def validate_ingredients(ingredients: str) -> str:
-
-    ingredients_array = ["fire", "water", "earth", "air"]
+    """Check that every word in ingredients is a known element."""
+    ingredients_array: list[str] = ["fire", "water", "earth", "air"]
 
     for i in ingredients.split():
         if i not in ingredients_array:
