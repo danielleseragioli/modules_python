@@ -4,6 +4,7 @@ from ex3.AggressiveStrategy import AggressiveStrategy
 
 
 def main() -> None:
+    """Run a single game-engine demonstration turn."""
     print("\n=== DataDeck Game Engine ===")
 
     print("\nConfiguring Fantasy Card Game...")
@@ -19,7 +20,7 @@ def main() -> None:
 
     print("\nSimulating aggressive turn...")
 
-    result = engine.simulate_turn()
+    result: dict[str, object] = engine.simulate_turn()
     hand = engine.last_hand
     hand_str = ", ".join(f"{c.name} ({c.cost})" for c in hand)
     print(f"Hand: [{hand_str}]")
