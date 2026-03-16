@@ -20,7 +20,7 @@ def main() -> None:
 
     stats = deck.get_deck_stats()
     print(f"Deck stats: {stats}")
-    
+
     print("\nDrawing and playing cards:\n")
 
     while True:
@@ -37,8 +37,6 @@ def main() -> None:
 
     print("\nPolymorphism in action: Same interface,"
           "different card behaviors!")
-
-
 
 
 if __name__ == "__main__":
