@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "loading-programs"
+version = "1.0.0"
+description = "Matrix data analysis with dependency management via pip and Poetry"
+authors = ["dseragio <dseragio@tudent.42porto.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+requests = "2.31.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+
