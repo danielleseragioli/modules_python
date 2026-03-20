@@ -45,33 +45,28 @@ def show_pip_vs_poetry():
 
 
 def analyze_matrix_data():
-    import numpy as np
     import pandas as pd
+    import numpy as np
 
-    data_points = 1000
-    print("\nAnalyzing Matrix data...")
-    print(f"Processing {data_points} data points...")
-    time_axis = np.arange(data_points)
-    signal = np.sin(time_axis / 30.0) + np.random.normal(0, 0.2, data_points)
-    df = pd.DataFrame({
-        "time": time_axis,
-        "signal": signal
-    })
-    metrics = {
-        "mean": float(df["signal"].mean()),
-        "std": float(df["signal"].std()),
-        "min": float(df["signal"].min()),
-        "max": float(df["signal"].max()),
-    }
+    signal = [10, 12, 11, 13, 15, 14, 16, 17, 16, 18]
+    time = list(range(len(signal)))
+
+    signal_array = np.array(signal)
+
+    df = pd.DataFrame({"time": time, "signal": signal_array})
+
+    mean_val = np.mean(signal_array)
+    std_val = np.std(signal_array)
+    min_val = np.min(signal_array)
+    max_val = np.max(signal_array)
+
+    print(f"Processing {len(signal)} data points...")
     print(
-        "Metrics -> "
-        f"mean: {metrics['mean']:.4f}, "
-        f"std: {metrics['std']:.4f}, "
-        f"min: {metrics['min']:.4f}, "
-        f"max: {metrics['max']:.4f}"
+        f"Metrics -> mean: {mean_val:.4f}, std: {std_val:.4f}, "
+        f"min: {min_val:.4f}, max: {max_val:.4f}"
     )
 
-    return df, metrics
+    return df
 
 
 def create_visualization(df, output_file="matrix_analysis.png"):
@@ -108,7 +103,7 @@ def main():
         print("poetry run python loading.py")
         sys.exit(1)
 
-    df, _metrics = analyze_matrix_data()
+    df = analyze_matrix_data()
     create_visualization(df)
 
 
