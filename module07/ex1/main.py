@@ -5,9 +5,10 @@ from ex1.Deck import Deck
 
 
 def main() -> None:
+    """Run a deck polymorphism demonstration."""
     print("\n=== DataDeck Deck Builder ===")
 
-    print("Building deck with different card types...")
+    print("\nBuilding deck with different card types...")
     deck = Deck()
     creature = CreatureCard("Fire Dragon", 5, "rare", 6, 5)
     spell = SpellCard("Lightning Bolt", 3, "common", "damage")
@@ -35,7 +36,7 @@ def main() -> None:
         result = card.play({})
         print(f"Play result: {result}\n")
 
-    print("\nPolymorphism in action: Same interface,"
+    print("Polymorphism in action: Same interface,"
           "different card behaviors!")
 
 

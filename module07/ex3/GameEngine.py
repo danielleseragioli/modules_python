@@ -23,7 +23,7 @@ class GameEngine:
         self.factory = factory
         self.strategy = strategy
 
-    def simulate_turn(self) -> dict[str, object]:
+    def simulate_turn(self) -> dict:
         """Simulate one turn and return action results."""
         if self.factory is None or self.strategy is None:
             raise RuntimeError("Engine is not configured.")
@@ -40,7 +40,7 @@ class GameEngine:
         self.total_damage += result["damage_dealt"]
         return result
 
-    def get_engine_status(self) -> dict[str, object]:
+    def get_engine_status(self) -> dict:
         """Return the current engine simulation summary."""
         return {
             "turns_simulated": self.turns,

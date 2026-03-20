@@ -6,6 +6,7 @@ from ex4.Rankable import Rankable
 
 
 class TournamentCard(Card, Combatable, Rankable):
+    """Tournament-ready card with combat and rank logic."""
 
     def __init__(self, card_id: str, name: str, cost: int, rarity: str,
                  attack_power: int, health: int) -> None:
@@ -58,7 +59,7 @@ class TournamentCard(Card, Combatable, Rankable):
             "target_remaining_health": remaining_health
             }
 
-    def defend(self, incoming_damage: int) -> dict[str, int]:
+    def defend(self, incoming_damage: int) -> dict:
         """Take damage and return remaining health data."""
         self.health -= incoming_damage
 
@@ -70,7 +71,7 @@ class TournamentCard(Card, Combatable, Rankable):
             "remaining_health": self.health
         }
 
-    def get_combat_stats(self) -> dict[str, int]:
+    def get_combat_stats(self) -> dict:
         """Return current combat statistics."""
         return {
             "attack_power": self.attack_power,
@@ -95,7 +96,7 @@ class TournamentCard(Card, Combatable, Rankable):
             raise ValueError("losses must be a non-negative integer")
         self.losses += losses
 
-    def get_rank_info(self) -> dict[str, int | str]:
+    def get_rank_info(self) -> dict:
         """Return rating and win/loss summary."""
         return {
             "rating": self.calculate_rating(),
@@ -104,7 +105,7 @@ class TournamentCard(Card, Combatable, Rankable):
             "record": f"{self.wins}-{self.losses}"
         }
 
-    def get_tournament_stats(self) -> dict[str, int | str]:
+    def get_tournament_stats(self) -> dict:
         """Return full tournament-related card stats."""
         return {
             "card_id": self.card_id,

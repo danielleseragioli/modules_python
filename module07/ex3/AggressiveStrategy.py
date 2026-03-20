@@ -33,6 +33,6 @@ class AggressiveStrategy(GameStrategy):
         """Return strategy identifier."""
         return "AggressiveStrategy"
 
-    def prioritize_targets(self, available_targets: list[str]) -> list[str]:
+    def prioritize_targets(self, available_targets: list) -> list:
         """Keep target order unchanged for now."""
         return available_targets

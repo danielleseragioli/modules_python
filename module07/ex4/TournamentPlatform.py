@@ -2,6 +2,7 @@ from ex4.TournamentCard import TournamentCard
 
 
 class TournamentPlatform:
+    """Platform service for tournament registration and matches."""
     def __init__(self) -> None:
         """Initialize an empty tournament platform."""
         self.cards: dict[str, TournamentCard] = {}
@@ -19,7 +20,7 @@ class TournamentPlatform:
         self,
         card1_id: str,
         card2_id: str
-    ) -> dict[str, int | str]:
+    ) -> dict:
         """Create a match and return the result payload."""
 
         card1 = self.cards.get(card1_id)
@@ -56,7 +57,7 @@ class TournamentPlatform:
             "loser_rating": loser.calculate_rating()
         }
 
-    def get_leaderboard(self) -> list[dict[str, int | str]]:
+    def get_leaderboard(self) -> list:
         """Return cards ordered by rating."""
 
         cards_list = list(self.cards.values())
@@ -71,7 +72,7 @@ class TournamentPlatform:
             })
         return leaderboard
 
-    def generate_tournament_report(self) -> dict[str, int | str]:
+    def generate_tournament_report(self) -> dict:
         """Generate a summary report of platform status."""
 
         total_cards = len(self.cards)

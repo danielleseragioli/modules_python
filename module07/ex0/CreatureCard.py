@@ -1,9 +1,13 @@
 from ex0.Card import Card
+from typing import Any
 
 
 class CreatureCard(Card):
+    """Concrete creature card with combat stats."""
+
     def __init__(self, name: str, cost: int, rarity: str,
-                 attack: int, health: int):
+                 attack: int, health: int) -> None:
+        """Initialize creature-specific attributes."""
         super().__init__(name, cost, rarity)
         if not isinstance(attack, int) or attack <= 0:
             raise ValueError("Invalid attack value")
@@ -13,6 +17,7 @@ class CreatureCard(Card):
         self.health = health
 
     def play(self, game_state: dict) -> dict:
+        """Play the creature onto the battlefield."""
         return {
             'card_played': self.name,
             'mana_used': self.cost,
@@ -20,13 +25,15 @@ class CreatureCard(Card):
         }
 
     def get_card_info(self) -> dict:
+        """Return full creature card information."""
         info = super().get_card_info()
         info['type'] = 'Creature'
         info['attack'] = self.attack
         info['health'] = self.health
         return info
 
-    def attack_target(self, target: dict) -> dict:
+    def attack_target(self, target: dict[str, Any]) -> dict[str, Any]:
+        """Attack a target dictionary with a health value."""
         if 'health' not in target:
             raise ValueError("Target must have a 'health' attribute.")
 

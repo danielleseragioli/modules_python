@@ -3,7 +3,9 @@ from ex2.Combatable import Combatable
 from ex2.Magical import Magical
 from ex2.EliteCard import EliteCard
 
-def main():
+
+def main() -> None:
+    """Run the multi-interface card demonstration."""
     print("\n=== DataDeck Ability System ===")
 
     card = EliteCard(
@@ -19,24 +21,26 @@ def main():
     for method in dir(Card):
         if not method.startswith('_'):
             card_methods.append(method)
-    
+
     magic_methods = []
     for method in dir(Magical):
         if not method.startswith('_'):
             magic_methods.append(method)
 
-    expected_combat_methods = ['attack', 'defend', 'get_combat_stats']
+    expected_combat_methods = []
+    for method in dir(Combatable):
+        if not method.startswith('_'):
+            expected_combat_methods.append(method)
     combat_methods = []
     for method in dir(card):
         if not method.startswith('_') and callable(getattr(card, method)):
             if method in expected_combat_methods:
                 combat_methods.append(method)
-    
+
     print("\nEliteCard capabilities:")
     print(f"- Card: {card_methods}")
     print(f"- Combatable: {combat_methods}")
     print(f"- Magical: {magic_methods}")
-
 
     print("\nPlaying Arcane Warrior (Elite Card):")
 

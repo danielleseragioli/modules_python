@@ -30,11 +30,11 @@ class CardFactory(ABC):
         pass
 
     @abstractmethod
-    def create_themed_deck(self, size: int) -> dict[str, list[Card]]:
+    def create_themed_deck(self, size: int) -> dict:
         """Build a themed deck with the requested size."""
         pass
 
     @abstractmethod
-    def get_supported_types(self) -> dict[str, list[str]]:
+    def get_supported_types(self) -> dict:
         """List supported card archetypes for this factory."""
         pass

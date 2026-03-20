@@ -2,7 +2,10 @@ from abc import ABC, abstractmethod
 
 
 class Card(ABC):
+    """Base abstract card for all card types."""
+
     def __init__(self, name: str, cost: int, rarity: str) -> None:
+        """Initialize common card attributes."""
         self.name = name
         self.cost = cost
         self.rarity = rarity
@@ -19,4 +22,5 @@ class Card(ABC):
         }
 
     def is_playable(self, available_mana: int) -> bool:
+        """Check if available mana can pay the card cost."""
         return available_mana >= self.cost

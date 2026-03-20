@@ -49,7 +49,7 @@ def main() -> None:
         print(leaderboard_line)
 
     report = platform.generate_tournament_report()
-    print("Platform Report:")
+    print("\nPlatform Report:")
     print(report)
 
     print("\n=== Tournament Platform Successfully Deployed! ===")

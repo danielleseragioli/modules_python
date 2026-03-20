@@ -4,17 +4,19 @@ from ex2.Magical import Magical
 
 
 class EliteCard(Card, Combatable, Magical):
+    """Elite card implementing combat and magic interfaces."""
 
     def __init__(self, name: str, cost: int, rarity: str,
-                 attack: int, health: int, mana: int):
+                 attack: int, health: int, mana: int) -> None:
+        """Initialize elite card stats."""
         super().__init__(name, cost, rarity)
 
         self.attack_power = attack
         self.health = health
         self.mana = mana
-    
-    """ implementation abstractmethods from Card """
+
     def play(self, game_state: dict) -> dict:
+        """Play the elite card."""
 
         return {
             "card_played": self.name,
@@ -22,8 +24,8 @@ class EliteCard(Card, Combatable, Magical):
             "effect": "Elite card enters battlefield"
         }
 
-    """ implementation abstractmethods from Combatable """
     def attack(self, target) -> dict:
+        """Attack a target with melee damage."""
 
         return {
             "attacker": self.name,
@@ -33,6 +35,7 @@ class EliteCard(Card, Combatable, Magical):
         }
 
     def defend(self, incoming_damage: int) -> dict:
+        """Defend against incoming damage."""
 
         damage_taken = max(0, incoming_damage - 3)
 
@@ -46,14 +49,15 @@ class EliteCard(Card, Combatable, Magical):
         }
 
     def get_combat_stats(self) -> dict:
+        """Return current combat stats."""
 
         return {
             "attack": self.attack_power,
             "health": self.health
         }
 
-    """ implementation abstractmethods from Magical """
     def cast_spell(self, spell_name: str, targets: list) -> dict:
+        """Cast a spell using mana."""
 
         mana_used = 4
         return {
@@ -64,6 +68,7 @@ class EliteCard(Card, Combatable, Magical):
         }
 
     def channel_mana(self, amount: int) -> dict:
+        """Increase available mana by amount."""
 
         self.mana += amount
 
@@ -73,9 +78,8 @@ class EliteCard(Card, Combatable, Magical):
         }
 
     def get_magic_stats(self) -> dict:
+        """Return current magic stats."""
 
         return {
             "mana": self.mana
         }
-
-

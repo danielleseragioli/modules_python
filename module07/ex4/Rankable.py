@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class Rankable(ABC):
+    """Interface for ranking-capable tournament entities."""
 
     @abstractmethod
     def calculate_rating(self) -> int:
@@ -19,6 +20,6 @@ class Rankable(ABC):
         pass
 
     @abstractmethod
-    def get_rank_info(self) -> dict[str, int | str]:
+    def get_rank_info(self) -> dict:
         """Return rating and record information."""
         pass

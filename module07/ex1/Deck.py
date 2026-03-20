@@ -2,14 +2,19 @@ from ex0.Card import Card
 import random
 
 
-class Deck():
-    def __init__(self):
+class Deck:
+    """Card deck container with utility operations."""
+
+    def __init__(self) -> None:
+        """Initialize an empty deck."""
         self.cards: list[Card] = []
 
     def add_card(self, card: Card) -> None:
+        """Add a card to the deck."""
         self.cards.append(card)
 
-    def remove_card(self, card_name: str) -> None:
+    def remove_card(self, card_name: str) -> bool:
+        """Remove the first card with the given name."""
         for card in self.cards:
             if card.name == card_name:
                 self.cards.remove(card)
@@ -17,14 +22,17 @@ class Deck():
         return False
 
     def shuffle(self) -> None:
+        """Shuffle cards in-place."""
         random.shuffle(self.cards)
 
-    def draw_card(self) -> None:
+    def draw_card(self) -> Card:
+        """Draw and return the top card from the deck."""
         if not self.cards:
             raise IndexError('Cannot draw from an empty deck')
         return self.cards.pop(0)
 
     def get_deck_stats(self) -> dict:
+        """Return aggregate deck statistics."""
         total_cards = len(self.cards)
         creatures = 0
         spells = 0
