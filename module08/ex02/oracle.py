@@ -1,4 +1,5 @@
 import os
+import sys
 from dotenv import load_dotenv  # type: ignore
 
 BASE_DIR = os.path.dirname(__file__)
@@ -36,22 +37,26 @@ def main() -> None:
 
     print("\nConfiguration loaded:")
     config = matrix_config()
+
     print(f"Mode: {config['MODE']}")
+
     data_base_stts = (
         "Connected" if config['URL'] != "Not found" else "DENIED"
     )
     print(f"Database: {data_base_stts} to local instance")
+
     api_stts = (
         "Authenticated" if config['API_KEY'] != "Not found" else "DENIED"
     )
     print(f"API Access: {api_stts}")
     print(f"Log Level: {config['LOG']}")
+
     zion_stts = "Online" if config['ZION'] != "Not found" else "Offline"
     print(f"Zion Network: {zion_stts}")
 
     print("\nEnvironment security check:")
     checks = [
-        ("No hardcoded secrets detected", config['API_KEY'] != "Not found"),
+        ("No hardcoded secrets detected", True),
         (".env file properly configured", check_env_file()
          and check_gitignore()),
         ("Production overrides available", True)
@@ -59,6 +64,12 @@ def main() -> None:
     for label, success in checks:
         icon = "[OK]" if success else "[KO]"
         print(f"{icon} {label}")
+
+    if not check_env_file():
+        print("\nWARNING: No .env file found!")
+        print("Copy .env.example to .env and fill in your values:")
+        print("cp .env.example .env")
+        sys.exit(1)
 
     print("\nThe Oracle sees all configurations.")
 

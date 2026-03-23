@@ -26,13 +26,13 @@ def main() -> None:
     env_name: str = os.path.basename(env_path)
     pkg_path: str = get_paths()
     if in_venv:
-        print("\nMATRIX STATUS: You're still plugged in")
+        print("\nMATRIX STATUS: Welcome to the construct")
 
         print(f"\nCurrent Python: {py_path}")
         print(f"Virtual Environment: {env_name}")
         print(f"Environment Path: {env_path}")
 
-        print("\nSUCCESS: You're in an isolated environment! ")
+        print("\nSUCCESS: You're in an isolated environment!")
         print("Safe to install packages without affecting the global system.")
 
         print("\nPackage installation path:")
@@ -44,7 +44,7 @@ def main() -> None:
         print("\nWARNING: You're in the global environment!")
         print("The machines can see everything you install.")
         print("\nTo enter the construct, run:")
-        print("python -m venv matrix_env")
+        print("python3 -m venv matrix_env")
         print("source matrix_env/bin/activate # On Unix")
         print("matrix_env")
         print("Scripts")

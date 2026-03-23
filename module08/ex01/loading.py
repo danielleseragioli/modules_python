@@ -3,7 +3,7 @@ import importlib
 import sys
 
 
-def check_dependencies():
+def check_dependencies() -> tuple[list[str], dict[str, str]]:
     required_pkgs = {
         "pandas": "Data manipulation ready",
         "numpy": "Numerical computations ready",
@@ -35,7 +35,7 @@ def check_dependencies():
     return missing_required, versions
 
 
-def show_pip_vs_poetry():
+def show_pip_vs_poetry() -> None:
     print("\nDependency management:")
     print("- pip uses requirements.txt with a package list.")
     print("- Poetry uses pyproject.toml and resolves "
@@ -44,7 +44,7 @@ def show_pip_vs_poetry():
           + "environment for reproducible runs.")
 
 
-def analyze_matrix_data():
+def analyze_matrix_data() -> pd.DataFrame:
     import pandas as pd
     import numpy as np
 
@@ -69,7 +69,7 @@ def analyze_matrix_data():
     return df
 
 
-def create_visualization(df, output_file="matrix_analysis.png"):
+def create_visualization(df: pd.DataFrame, output_file: str ="matrix_analysis.png") -> None:
     import matplotlib.pyplot as plt
 
     print("Generating visualization...")
@@ -88,7 +88,7 @@ def create_visualization(df, output_file="matrix_analysis.png"):
     print(f"Results saved to: {output_file}")
 
 
-def main():
+def main() -> None:
     print("LOADING STATUS: Loading programs...")
 
     missing_required, _versions = check_dependencies()
