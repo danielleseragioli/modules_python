@@ -3,9 +3,10 @@ name = "loading-programs"
 version = "1.0.0"
 description = "Matrix data analysis with dependency management via pip and Poetry"
 authors = ["dseragio <dseragio@tudent.42porto.com>"]
+package-mode = false
 
 [tool.poetry.dependencies]
-python = ">=3.10"
+python = ">=3.10,<3.13"
 pandas = "2.1.0"
 numpy = "1.26.0"
 matplotlib = "3.7.2"

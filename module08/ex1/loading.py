@@ -4,18 +4,15 @@ import sys
 
 
 def check_dependencies() -> tuple[list[str], dict[str, str]]:
-    required_pkgs = {
+    pkgs = {
         "pandas": "Data manipulation ready",
-        "numpy": "Numerical computations ready",
+        "requests": "Network access ready",
         "matplotlib": "Visualization ready"
-    }
-    optional_pkgs = {
-        "requests": "Network access ready"
     }
     versions = {}
     missing_required = []
     print("\nChecking dependencies:")
-    for pkg_name, description in required_pkgs.items():
+    for pkg_name, description in pkgs.items():
         try:
             importlib.import_module(pkg_name)
             version = metadata.version(pkg_name)
@@ -24,27 +21,10 @@ def check_dependencies() -> tuple[list[str], dict[str, str]]:
         except Exception:
             print(f"[MISSING] {pkg_name}")
             missing_required.append(pkg_name)
-    for pkg_name, description in optional_pkgs.items():
-        try:
-            importlib.import_module(pkg_name)
-            version = importlib.metadata.version(pkg_name)
-            versions[pkg_name] = version
-            print(f"[OK] {pkg_name} ({version}) - {description}")
-        except Exception:
-            print(f"[MISSING] {pkg_name} (optional)")
     return missing_required, versions
 
 
-def show_pip_vs_poetry() -> None:
-    print("\nDependency management:")
-    print("- pip uses requirements.txt with a package list.")
-    print("- Poetry uses pyproject.toml and resolves "
-          + "dependencies automatically.")
-    print("- Poetry also creates an isolated "
-          + "environment for reproducible runs.")
-
-
-def analyze_matrix_data() -> pd.DataFrame:
+def analyze_matrix_data():
     import pandas as pd
     import numpy as np
 
@@ -55,21 +35,14 @@ def analyze_matrix_data() -> pd.DataFrame:
 
     df = pd.DataFrame({"time": time, "signal": signal_array})
 
-    mean_val = np.mean(signal_array)
-    std_val = np.std(signal_array)
-    min_val = np.min(signal_array)
-    max_val = np.max(signal_array)
-
+    print("\nAnalyzing Matrix data...")
     print(f"Processing {len(signal)} data points...")
-    print(
-        f"Metrics -> mean: {mean_val:.4f}, std: {std_val:.4f}, "
-        f"min: {min_val:.4f}, max: {max_val:.4f}"
-    )
 
     return df
 
 
-def create_visualization(df: pd.DataFrame, output_file: str ="matrix_analysis.png") -> None:
+def create_visualization(df,
+                         output_file: str = "matrix_analysis.png") -> None:
     import matplotlib.pyplot as plt
 
     print("Generating visualization...")
@@ -84,15 +57,14 @@ def create_visualization(df: pd.DataFrame, output_file: str ="matrix_analysis.pn
     plt.savefig(output_file)
     plt.close()
 
-    print("Analysis complete!")
+    print("\nAnalysis complete!")
     print(f"Results saved to: {output_file}")
 
 
 def main() -> None:
-    print("LOADING STATUS: Loading programs...")
+    print("\nLOADING STATUS: Loading programs...")
 
     missing_required, _versions = check_dependencies()
-    show_pip_vs_poetry()
 
     if missing_required:
         print("\nMissing required dependencies:", ", ".join(missing_required))
