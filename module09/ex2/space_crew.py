@@ -49,7 +49,7 @@ class SpaceMission(BaseModel):
 
         for member in self.crew:
             if not member.is_active:
-                raise ValueError(...)
+                raise ValueError("All crew members must be active")
 
         return self
 

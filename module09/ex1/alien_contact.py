@@ -47,7 +47,7 @@ class AlienContactModel(BaseModel):
 
 def main() -> None:
 
-    print("Alien Contact Log Validation")
+    print("\nAlien Contact Log Validation")
     print("=" * 40)
     print("Valid contact report:")
 
@@ -64,7 +64,7 @@ def main() -> None:
             is_verified=True
         )
         print(f"ID: {alien_contact.contact_id}")
-        print(f"Type: {alien_contact.contact_type}")
+        print(f"Type: {alien_contact.contact_type.value}")
         print(f"Location: {alien_contact.location}")
         print(f"Signal: {alien_contact.signal_strength}/10")
         print(f"Duration: {alien_contact.duration_minutes} minutes")
