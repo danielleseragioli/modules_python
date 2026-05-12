@@ -54,7 +54,7 @@ def main() -> None:
     transformed = spell_transformer(spells)
     print(" ".join(transformed))
 
-    print("\n Tetng power filter...")
+    print("\nTetng power filter...")
     filtered = power_filter(mages, 42)
     print(f"{len(filtered)} mages with power >= 42")
 

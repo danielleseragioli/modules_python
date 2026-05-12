@@ -1,7 +1,9 @@
 from collections.abc import Callable
 
+
 def mage_counter() -> Callable:
     count = 0
+
     def counter():
         nonlocal count
         count += 1
@@ -11,6 +13,7 @@ def mage_counter() -> Callable:
 
 def spell_accumulator(initial_power: int) -> Callable:
     total = initial_power
+
     def accumulate(amount):
         nonlocal total
         total += amount
@@ -29,7 +32,7 @@ def memory_vault() -> dict[str, Callable]:
 
     def store(key, value):
         memories[key] = value
-    
+
     def recall(key):
         if key in memories:
             return memories[key]
@@ -40,7 +43,7 @@ def memory_vault() -> dict[str, Callable]:
 
 
 def main() -> None:
-    
+
     print("\nTesting mage counter...")
     counter_a = mage_counter()
     counter_b = mage_counter()
@@ -55,9 +58,9 @@ def main() -> None:
 
     print("\nTesting enchantment factory...")
     flaming = enchantment_factory("Flaming")
-    frozen  = enchantment_factory("Frozen")
+    frozen = enchantment_factory("Frozen")
     print(flaming("Sword"))
-    print(frozen("Shield")) 
+    print(frozen("Shield"))
 
     print("\nTesting memory vault...")
     vault = memory_vault()
@@ -65,7 +68,6 @@ def main() -> None:
     vault["store"]("secret", 42)
     print(f"Recall 'secret': {vault['recall']('secret')}")
     print(f"Recall 'unknown': {vault['recall']('unknown')}")
-
 
 
 if __name__ == "__main__":

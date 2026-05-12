@@ -41,7 +41,8 @@ def retry_spell(max_attempts: int) -> Callable:
                     result = func(*args, **kwargs)
                     return result
                 except Exception:
-                    print(f"Spell failed, retrying... (attempt {try_number}/{max_attempts})")
+                    print("Spell failed, retrying... "
+                          + f"(attempt {try_number}/{max_attempts})")
             return f"Spell casting failed after {max_attempts} attempts"
         return wrapper
     return decorator
@@ -57,7 +58,7 @@ class MageGuild:
             if not char.isalpha() and not char.isspace():
                 return False
         return True
-    
+
     def cast_spell(self, spell_name: str, power: int) -> str:
         if power < 10:
             return "Insufficient power for this spell"
@@ -99,6 +100,6 @@ def main() -> None:
     print(guild.cast_spell("Lightning", 15))
     print(guild.cast_spell("Fire", 5))
 
+
 if __name__ == "__main__":
     main()
-        

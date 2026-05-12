@@ -5,7 +5,7 @@ def spell_combiner(spell1: Callable, spell2: Callable) -> Callable:
 
     if not callable(spell1) or not callable(spell2):
         raise TypeError("Both arguments must be callable")
-    
+
     def combined_spell(target: str, power: int) -> tuple[str, str]:
 
         result1 = spell1(target, power)
@@ -26,12 +26,13 @@ def power_amplifier(base_spell: Callable, multiplier: int) -> Callable:
 def conditional_caster(condition: Callable, spell: Callable) -> Callable:
 
     def conditional_spell(target: str, power: int) -> str:
-        if condition(target, power) == True:
+        if condition(target, power):
             return spell(target, power)
         else:
             return "Spell fizzled"
 
     return conditional_spell
+
 
 def spell_sequence(spells: list[Callable]) -> Callable:
 
@@ -46,28 +47,38 @@ def spell_sequence(spells: list[Callable]) -> Callable:
 
 def main() -> None:
 
-    def fireball(target, power):
-        return f"Fireball hits {target} for {power} damage"
+    def fireball(target: str, power: int) -> str:
+        return f"Fireball hits {target}"
 
-    def heal(target, power):
-        return f"Heals {target} for {power} HP"
+    def heal(target: str, power: int) -> str:
+        return f"Heals {target}"
 
+    print("Testing spell combiner...")
     combined = spell_combiner(fireball, heal)
     result = combined("Dragon", 10)
-    print(f"\nCombined spell result: {result[0]}, {result[1]}\n")
+    print(f"Combined spell result: {result[0]}, {result[1]}")
 
-    mega = power_amplifier(fireball, 3)
-    print(mega("Dragon", 10))
+    print("\nTesting power amplifier...")
+    multiplier = 3
+    original_power = 10
+    mega = power_amplifier(fireball, multiplier)
+    print(f"Original: {original_power}, Amplified:"
+          + f"{original_power * multiplier}")
+    print(mega("Dragon", original_power))
 
-    def is_alive(target, power): 
+    print("\nTesting conditional caster...")
+
+    def is_strong(target: str, power: int) -> bool:
         return power > 0
-    safe_cast = conditional_caster(is_alive, fireball)
+    safe_cast = conditional_caster(is_strong, fireball)
     print(safe_cast("Dragon", 10))
-    print(safe_cast("Dragon", 0)) 
+    print(safe_cast("Dragon", 0))
 
+    print("\nTesting spell sequence...")
     sequence = spell_sequence([fireball, heal, fireball])
-    print()
-    print(sequence("Dragon", 10))
+    results = sequence("Dragon", 10)
+    for r in results:
+        print(r)
 
 
 if __name__ == "__main__":

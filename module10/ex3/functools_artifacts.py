@@ -5,7 +5,7 @@ import operator
 
 def spell_reducer(spells: list[int], operation: str) -> int:
 
-    operations = {
+    operations: dict[str, Callable[[int, int], int]] = {
         "add": operator.add,
         "multiply": operator.mul,
         "max": max,
@@ -17,17 +17,17 @@ def spell_reducer(spells: list[int], operation: str) -> int:
 
     if operation not in operations:
         raise ValueError("not valid operation")
-    
+
     func = operations[operation]
     return reduce(func, spells)
 
 
 def partial_enchanter(base_enchantment: Callable) -> dict[str, Callable]:
-    
+
     fire_version = partial(base_enchantment, 50, "fire")
     ice_version = partial(base_enchantment, 50, "ice")
     lightning_version = partial(base_enchantment, 50, "lightning")
-    
+
     return {
         "fire": fire_version,
         "ice": ice_version,
@@ -45,11 +45,11 @@ def memoized_fibonacci(n: int) -> int:
 
 
 def spell_dispatcher() -> Callable[[Any], str]:
-    
+
     @singledispatch
     def cast_spell(spell):
         return "Unknown spell type"
-    
+
     @cast_spell.register(int)
     def _(spell):
         return f"{spell} damage"
@@ -57,15 +57,14 @@ def spell_dispatcher() -> Callable[[Any], str]:
     @cast_spell.register(str)
     def _(spell):
         return spell
-    
+
     @cast_spell.register(list)
     def _(spell):
         return f"{len(spell)} spells"
-    
+
     return cast_spell
 
 
- 
 def main() -> None:
 
     print("\nTesting spell reducer...")
