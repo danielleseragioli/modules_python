@@ -10,7 +10,7 @@ def power_filter(mages: list[dict], min_power: int) -> list[dict]:
 
 
 def spell_transformer(spells: list[str]) -> list[str]:
-    mapped = list(map(lambda spell: "*" + spell + "*", spells))
+    mapped = list(map(lambda spell: "* " + spell + " *", spells))
     return mapped
 
 

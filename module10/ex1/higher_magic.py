@@ -53,7 +53,7 @@ def main() -> None:
     def heal(target: str, power: int) -> str:
         return f"Heals {target}"
 
-    print("Testing spell combiner...")
+    print("\nTesting spell combiner...")
     combined = spell_combiner(fireball, heal)
     result = combined("Dragon", 10)
     print(f"Combined spell result: {result[0]}, {result[1]}")
